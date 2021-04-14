@@ -99,6 +99,7 @@ export class StartCommand implements Command {
                     .setDescription(
                       'I see, ashen one, you have chosen Ranger.\n Manage your advantage with high speed and DPS.'
                     )
+                    await message.channel.send(ranger)
                   break
                 case '🛡️':
                   aClass = 3
@@ -111,6 +112,7 @@ export class StartCommand implements Command {
                     .setDescription(
                       'I see, ashen one, you have chosen Knight.\n Now you can hold the entire enemies with your sword.'
                     )
+                    await message.channel.send(knight)
                   break
                 case '🗡️':
                   aClass = 4
@@ -122,7 +124,8 @@ export class StartCommand implements Command {
                     .setTitle('🗡️ Rogue')
                     .setDescription(
                       'I see, ashen one, you have chosen Rogue.\n Now you can burst enemies by their blind eyes.'
-                    )
+                      )
+                      await message.channel.send(rogue)
                   break
                 case '🪓':
                   aClass = 5
@@ -135,6 +138,7 @@ export class StartCommand implements Command {
                     .setDescription(
                       'I see, ashen one, you have chosen Berserker.\n Now you can taste their bloods with your axe.'
                     )
+                    await message.channel.send(berserker)
                   break
                 case '✝️':
                   aClass = 6
@@ -147,6 +151,7 @@ export class StartCommand implements Command {
                     .setDescription(
                       'I see, ashen one, you have chosen Paladin.\n Go and blind your enemies with your faith.'
                     )
+                    await message.channel.send(paladin)
                   break
               }
             })
