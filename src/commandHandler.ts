@@ -5,9 +5,9 @@ import {
   HelpCommand,
   StartCommand,
   StatusCommand,
+  NickCommand,
+  VsfCommand,
 } from './commands'
-import { NickCommand } from './commands/NickCommand'
-import { VsfCommand } from './commands/vsfCommand'
 import Command from './models/commandInterface'
 import { CommandParser } from './models/commandParser'
 
