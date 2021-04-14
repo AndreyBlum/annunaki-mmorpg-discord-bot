@@ -3,7 +3,7 @@ type BotConfig = {
 }
 
 const config: BotConfig = {
-  prefix: ';',
+  prefix: 'a!',
 }
 
 export default config

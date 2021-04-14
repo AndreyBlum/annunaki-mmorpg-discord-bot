@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 /** Intermediate module file for exporting all commands
  * Makes importing several commands simpler
  *
@@ -12,5 +13,8 @@
  */
 
 export * from './greetCommand'
-export * from './timeCommand'
 export * from './helpCommand'
+export * from './statusCommand'
+export * from './vsfCommand'
+export * from './startCommand'
+export * from './cringeCommand'

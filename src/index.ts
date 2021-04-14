@@ -1,7 +1,14 @@
+/* eslint-disable prettier/prettier */
 import Discord, { Message } from 'discord.js'
 import { DISCORD_TOKEN } from './config/secrets'
 import CommandHandler from './commandHandler'
 import config from './config/botConfig'
+import Levels from 'discord-xp'
+import mongoose from 'mongoose'
+
+Levels.setURL(
+  'mongodb+srv://AndreyLB:4998pk98@cluster0.o48ez.mongodb.net/annunaki'
+)
 
 const client = new Discord.Client()
 
@@ -14,8 +21,23 @@ const commandHandler = new CommandHandler(config.prefix)
 
 client.on('ready', () => {
   console.log('🚀 Bot is on')
+  mongoose.connect(
+    'mongodb+srv://AndreyLB:4998pk98@cluster0.o48ez.mongodb.net/annunaki'
+  )
+  const db = mongoose.connection
+  db.on('error', console.error.bind(console, 'connection error:'))
+  db.once('open', function () {
+    //conecta aqui andrey
+    const player = new mongoose.Schema({
+      id_class: Number,
+      id_user: Number,
+    })
+    const rpgClass = new mongoose.Schema({
+      id_class: Number,
+    })
+  })
 })
-client.on('message', (message: Message) => {
+client.on('message', async (message: Message) => {
   commandHandler.handleMessage(message)
 })
 client.on('error', (e) => {

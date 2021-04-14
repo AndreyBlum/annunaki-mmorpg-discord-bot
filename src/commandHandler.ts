@@ -1,5 +1,13 @@
 import { Message } from 'discord.js'
-import { GreetCommand, HelpCommand, TimeCommand } from './commands'
+import {
+  CringeCommand,
+  GreetCommand,
+  HelpCommand,
+  StartCommand,
+  StatusCommand,
+} from './commands'
+import { NickCommand } from './commands/NickCommand'
+import { VsfCommand } from './commands/vsfCommand'
 import Command from './models/commandInterface'
 import { CommandParser } from './models/commandParser'
 
@@ -9,7 +17,15 @@ export default class CommandHandler {
   private readonly prefix: string
 
   constructor(prefix: string) {
-    const commandClasses = [HelpCommand, GreetCommand, TimeCommand]
+    const commandClasses = [
+      HelpCommand,
+      GreetCommand,
+      StatusCommand,
+      NickCommand,
+      VsfCommand,
+      StartCommand,
+      CringeCommand,
+    ]
 
     this.commands = commandClasses.map((commandClass) => new commandClass())
     this.prefix = prefix
@@ -20,7 +36,6 @@ export default class CommandHandler {
     if (message.author.bot || !this.isCommand(message)) {
       return
     }
-
     const commandParser = new CommandParser(message, this.prefix)
 
     const matchedCommand = this.commands.find((command) =>
