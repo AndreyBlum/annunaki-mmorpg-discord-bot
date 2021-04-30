@@ -14,7 +14,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/NathanAlcantara/bot-template"
+    "url": "git+https://github.com/AndreyBlum/Annunaki-MMORPG-DiscordBOT"
   },
   "keywords": [
     "discord",
@@ -22,12 +22,12 @@
     "bot",
     "heroku"
   ],
-  "author": "Nathan Alcantara",
+  "author": "Andrey Blum",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/NathanAlcantara/bot-template/issues"
+    "url": "https://github.com/AndreyBlum/Annunaki-MMORPG-DiscordBOT/issues"
   },
-  "homepage": "https://github.com/NathanAlcantara/bot-template#readme",
+  "homepage": "https://github.com/AndreyBlum/Annunaki-MMORPG-DiscordBOT#readme",
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^4.20.0",
     "@typescript-eslint/parser": "^4.20.0",
