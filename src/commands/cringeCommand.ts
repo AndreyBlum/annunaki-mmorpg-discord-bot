@@ -15,7 +15,7 @@ export class CringeCommand implements Command {
     if (mention) {
       await message.channel.send(`Aff que cringe, ${mention}.`)
     } else {
-      message.channel.send('Que cringe mano, marca alguem 🤮!')
+      message.channel.send('Que cringe mano, você tem que marcar alguem 🤮!')
     }
   }
 }

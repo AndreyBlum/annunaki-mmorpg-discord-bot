@@ -14,7 +14,8 @@ export class HelpCommand implements Command {
       .setColor('#4B0082')
       .setAuthor('Anunnaki', 'https://i.imgur.com/CvHFB93.png')
       .setThumbnail('https://i.imgur.com/CvHFB93.png')
-      .addField('Lista de comandos\n', '- ' + commandsNames.join('\n- '))
+      .addField('How to start?', 'First you need to type **a!start** to start your adventure!')
+      .addField('List of commands\n', '- ' + commandsNames.join('\n- '))
     await message.channel.send(embed)
   }
 }

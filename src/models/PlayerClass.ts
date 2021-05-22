@@ -8,26 +8,17 @@ const players = require('../models/Player')
 
 export class PlayerClass {
     
-  static async manaClass(userId: number, guildId: number): Promise<any> {
+  public async appendMana(userId: number, guildId: number, mp: number): Promise<any> {
+
     const player = await players.findOne({
       userID: userId,
       guildID: guildId,
     })
-    const rpgClass = player.classeID
-    switch (rpgClass) {
-      case 1:
-        return 2;
-        break
-      case 2:
-        break
-      case 3:
-        break
-      case 4:
-        break
-      case 5:
-        break
-      case 6:
-        break
-    }
+
+    const mana = mp + player.mp
+    
+    await player.updateOne(userId, guildId, { mp: mana });
+    player.mp = mana
+    await player.save();
   }
 }

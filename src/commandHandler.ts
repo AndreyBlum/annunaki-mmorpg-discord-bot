@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Message } from 'discord.js'
 import {
   CringeCommand,
@@ -7,6 +8,8 @@ import {
   StatusCommand,
   NickCommand,
   VsfCommand,
+  ClassCommand,
+  SkillsCommand,
 } from './commands'
 import Command from './models/commandInterface'
 import { CommandParser } from './models/commandParser'
@@ -25,6 +28,8 @@ export default class CommandHandler {
       VsfCommand,
       StartCommand,
       CringeCommand,
+      ClassCommand,
+      SkillsCommand
     ]
 
     this.commands = commandClasses.map((commandClass) => new commandClass())

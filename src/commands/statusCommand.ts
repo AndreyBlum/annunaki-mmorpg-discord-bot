@@ -1,5 +1,5 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable prettier/prettier */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import Command from '../models/commandInterface'
 import { Message, MessageEmbed } from 'discord.js'
 import Levels from 'discord-xp'
@@ -24,12 +24,10 @@ export class StatusCommand implements Command {
       });
       
       let rpgClass = player.classeID
-      let mp = player.mp
 
       switch (rpgClass) {
         case 1:
         rpgClass = '🧙 Mage'
-        mp = mp * 2
         break;
         case 2:
         rpgClass = '🏹 Ranged'
@@ -47,7 +45,6 @@ export class StatusCommand implements Command {
         rpgClass = '✝️ Paladin'
         break;
       }
-      await player.save().catch((e: unknown) => console.log(`Failed to save new user.`));
 
       const embed = new MessageEmbed()
         .setColor('#4B0082')
@@ -57,12 +54,14 @@ export class StatusCommand implements Command {
         )
         .addFields(
           { name: 'Class', value: rpgClass, inline: true},
-          { name: 'LVL:', value: `⚡ ${user.level} (${user.xp})`, inline: true},
+          { name: 'LVL:', value: user.level > 9 ? `⚡ ${user.level}\n Lefts **${Levels.xpFor(user.level+1)}XP** to level ${user.level+1}` 
+          : `⚡ 0${user.level}\n Lefts **${Levels.xpFor(user.level+1)}XP** to level 0${user.level+1}`, inline: true},
           { name: 'Gender:', value: player.gender, inline: true },
           { name: '\u200B', value: '\u200B' },
           { name: 'HP', value: `❤ ${player.hp}`, inline: true },
           { name: 'Mana', value: `💧 ${player.mp}`, inline: true},
-          { name: 'Base Power', value: `🔥 ${player.power}`, inline: true}
+          { name: 'Base Power', value: `🔥 ${player.power}`, inline: true},
+          { name: 'Speed', value: player.speed > 9 ? `👟 ${player.speed}` : `👟 0${player.speed}` , inline: true }
         )
         .setThumbnail(message.author.displayAvatarURL({ format: 'png', dynamic: true}))
         .setFooter('Forged with fire and blood only to serve you', 'https://i.imgur.com/CvHFB93.png')

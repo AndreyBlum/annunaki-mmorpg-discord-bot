@@ -2,7 +2,6 @@
 import Command from '../models/commandInterface'
 import { Message, MessageEmbed } from 'discord.js'
 import Levels from 'discord-xp'
-import { SSL_OP_SSLEAY_080_CLIENT_DH_BUG } from 'node:constants'
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const players = require('../models/Player')
 
@@ -23,6 +22,11 @@ export class StartCommand implements Command {
     let mpMultiplier = 0
     let hpMultiplier = 0
     let bpMultiplier = 0
+    let spMultiplier = 0
+    let image = ''
+    let description = ''
+    let icon = ''
+
     const user = await Levels.fetch(message.author.id, guildId)
     if (user) {
       await message.channel.send('You already have started your adventure.')
@@ -66,6 +70,9 @@ export class StartCommand implements Command {
                   value: 'Knights tanks very well and do a medium damage.',
                   inline: true,
                 },
+                { name: '\u200B', 
+                  value: '\u200B', 
+                },
                 {
                   name: '🗡️',
                   value: 'Rogues have a good speed and good DPS.',
@@ -83,8 +90,8 @@ export class StartCommand implements Command {
                   inline: true,
                 }
               )
-              .setDescription(
-                'React with the emoji of the class that you want.'
+              .setFooter(
+                'React with the emoji of the class that you want.', 'https://i.imgur.com/CvHFB93.png'
               )
             await message.channel
               .send(embed)
@@ -111,122 +118,74 @@ export class StartCommand implements Command {
                           mpMultiplier = 2
                           hpMultiplier = 0.65
                           bpMultiplier = 1.7
-                          chooseClass.delete()
-                          const mage = new MessageEmbed()
-                            .setColor('#4B0082')
-                            .setAuthor(
-                              'Anunnaki',
-                              'https://i.imgur.com/CvHFB93.png'
-                            )
-                            .setImage('https://i.imgur.com/4oBwRO2.jpg')
-                            .setTitle('🧙 Mage')
-                            .setDescription(
-                              'I see, ashen one, you have chosen Mage.\n Take care with your high mana usage and enjoy your bursts.'
-                            )
-                            .setFooter('Try a!status to see your status.', 'https://i.imgur.com/CvHFB93.png')
-                          await message.channel.send(mage)
+                          spMultiplier = 1.2
+                          image = 'https://i.imgur.com/4oBwRO2.jpg'
+                          description = 'I see, ashen one, you have chosen Mage.\n Take care with your high mana usage and enjoy your bursts.'
+                          icon = '🧙 Mage'
                           break
                         case '🏹':
                           aClass = 2
                           mpMultiplier = 1
                           hpMultiplier = 0.8
                           bpMultiplier = 1.45
-                          chooseClass.delete()
-                          const ranger = new MessageEmbed()
-                            .setColor('#4B0082')
-                            .setAuthor(
-                              'Anunnaki',
-                              'https://i.imgur.com/CvHFB93.png'
-                            )
-                            .setImage('https://i.imgur.com/VlSgXTl.jpg')
-                            .setTitle('🏹 Ranger')
-                            .setDescription(
-                              'I see, ashen one, you have chosen Ranger.\n Manage your advantage with high speed and DPS.'
-                            )
-                            .setFooter('Try a!status to see your status.', 'https://i.imgur.com/CvHFB93.png')
-                          await message.channel.send(ranger)
+                          spMultiplier = 1.5
+                          image = 'https://i.imgur.com/VlSgXTl.jpg'
+                          description = 'I see, ashen one, you have chosen Ranger.\n Manage your advantage with high speed and DPS.'
+                          icon = '🏹 Ranger'
                           break
                         case '🛡️':
                           aClass = 3
                           mpMultiplier = 0.9
                           hpMultiplier = 2
                           bpMultiplier = 0.85
-                          chooseClass.delete()
-                          const knight = new MessageEmbed()
-                            .setColor('#4B0082')
-                            .setAuthor(
-                              'Anunnaki',
-                              'https://i.imgur.com/CvHFB93.png'
-                            )
-                            .setImage('https://i.imgur.com/XhlhmuY.jpg')
-                            .setTitle('🛡️ Knight')
-                            .setDescription(
-                              'I see, ashen one, you have chosen Knight.\n Now you can hold the entire enemies with your sword.'
-                            )
-                            .setFooter('Try a!status to see your status.', 'https://i.imgur.com/CvHFB93.png')
-                          await message.channel.send(knight)
+                          spMultiplier = 0.9
+                          image = 'https://i.imgur.com/XhlhmuY.jpg'
+                          description = 'I see, ashen one, you have chosen Knight.\n Now you can hold the entire enemies with your sword.'
+                          icon = '🛡️ Knight'
                           break
                         case '🗡️':
                           aClass = 4
                           mpMultiplier = 0.65
                           hpMultiplier = 0.6
                           bpMultiplier = 1.95
-                          chooseClass.delete()
-                          const rogue = new MessageEmbed()
-                            .setColor('#4B0082')
-                            .setAuthor(
-                              'Anunnaki',
-                              'https://i.imgur.com/CvHFB93.png'
-                            )
-                            .setImage('https://i.imgur.com/cnFXKuV.jpg')
-                            .setTitle('🗡️ Rogue')
-                            .setDescription(
-                              'I see, ashen one, you have chosen Rogue.\n Now you can burst enemies by their blind eyes.'
-                            )
-                            .setFooter('Try a!status to see your status.', 'https://i.imgur.com/CvHFB93.png')
-                          await message.channel.send(rogue)
+                          spMultiplier = 1.7
+                          image = 'https://i.imgur.com/cnFXKuV.jpg'
+                          description = 'I see, ashen one, you have chosen Rogue.\n Now you can burst enemies by their blind eyes.'
+                          icon = 'https://i.imgur.com/cnFXKuV.jpg'
                           break
                         case '🪓':
                           aClass = 5
                           mpMultiplier = 1.2
                           hpMultiplier = 1.6
                           bpMultiplier = 1.3
-                          chooseClass.delete()
-                          const berserker = new MessageEmbed()
-                            .setColor('#4B0082')
-                            .setAuthor(
-                              'Anunnaki',
-                              'https://i.imgur.com/CvHFB93.png'
-                            )
-                            .setImage('https://i.imgur.com/MsdglCc.jpg')
-                            .setTitle('🪓 Berserker')
-                            .setDescription(
-                              'I see, ashen one, you have chosen Berserker.\n Now you can taste their bloods with your axe.'
-                            )
-                            .setFooter('Try a!status to see your status.', 'https://i.imgur.com/CvHFB93.png')
-                          await message.channel.send(berserker)
+                          spMultiplier = 1.3
+                          image = 'https://i.imgur.com/MsdglCc.jpg'
+                          description = 'I see, ashen one, you have chosen Berserker.\n Now you can taste their bloods with your axe.'
+                          icon = '🪓 Berserker'
                           break
                         case '✝️':
                           aClass = 6
                           mpMultiplier = 1.2
-                          hpMultiplier = 1.8
+                          hpMultiplier = 1.6
                           bpMultiplier = 1.7
-                          chooseClass.delete()
-                          const paladin = new MessageEmbed()
+                          spMultiplier = 0.9
+                          image = 'https://i.imgur.com/FRVdszx.jpg'
+                          description = 'I see, ashen one, you have chosen Paladin.\n Go and blind your enemies with your faith.'
+                          icon = '✝️ Paladin'
+                          break
+                      }
+                      const embedM = new MessageEmbed()
                             .setColor('#4B0082')
                             .setAuthor(
                               'Anunnaki',
                               'https://i.imgur.com/CvHFB93.png'
                             )
-                            .setImage('https://i.imgur.com/FRVdszx.jpg')
-                            .setTitle('✝️ Paladin')
-                            .setDescription(
-                              'I see, ashen one, you have chosen Paladin.\n Go and blind your enemies with your faith.'
-                            )
+                            .setImage(image)
+                            .setTitle(icon)
+                            .setDescription(description)
                             .setFooter('Try a!status to see your status.', 'https://i.imgur.com/CvHFB93.png')
-                          await message.channel.send(paladin)
-                          break
-                      }
+                          await message.channel.send(embedM)
+
                       await Levels.createUser(message.author.id, guildId)
 
                       const newPlayer = new players({
@@ -237,6 +196,10 @@ export class StartCommand implements Command {
                         hp: 100 * hpMultiplier,
                         power: 10 * bpMultiplier,
                         mp: 100 * mpMultiplier,
+                        speed: 5 * spMultiplier,
+                        mpMultiplier: mpMultiplier,
+                        hpMultiplier: hpMultiplier,
+                        bpMultiplier: bpMultiplier,
                       })
 
                       await newPlayer.save()
@@ -250,122 +213,75 @@ export class StartCommand implements Command {
                           mpMultiplier = 2.0
                           hpMultiplier = 0.65
                           bpMultiplier = 1.7
-                          chooseClass.delete()
-                          const mage = new MessageEmbed()
-                            .setColor('#4B0082')
-                            .setAuthor(
-                              'Anunnaki',
-                              'https://i.imgur.com/CvHFB93.png'
-                            )
-                            .setImage('https://i.imgur.com/m0duawK.jpg')
-                            .setTitle('🧙 Mage')
-                            .setDescription(
-                              'I see, ashen one, you have chosen Mage.\n Take care with your high mana usage and enjoy your bursts.'
-                            )
-                            .setFooter('Try a!status to see your status.', 'https://i.imgur.com/CvHFB93.png')
-                          await message.channel.send(mage)
+                          spMultiplier = 1.2
+                          image = 'https://i.imgur.com/m0duawK.jpg'
+                          description = 'I see, ashen one, you have chosen Mage.\n Take care with your high mana usage and enjoy your bursts.'
+                          icon = '🧙 Mage'
                           break
                         case '🏹':
                           aClass = 2
                           mpMultiplier = 1
                           hpMultiplier = 0.8
                           bpMultiplier = 1.45
-                          chooseClass.delete()
-                          const ranger = new MessageEmbed()
-                            .setColor('#4B0082')
-                            .setAuthor(
-                              'Anunnaki',
-                              'https://i.imgur.com/CvHFB93.png'
-                            )
-                            .setImage('https://i.imgur.com/RohJ03b.png')
-                            .setTitle('🏹 Ranger')
-                            .setDescription(
-                              'I see, ashen one, you have chosen Ranger.\n Manage your advantage with high speed and DPS.'
-                            )
-                            .setFooter('Try a!status to see your status.', 'https://i.imgur.com/CvHFB93.png')
-                          await message.channel.send(ranger)
+                          spMultiplier = 1.5
+                          image = 'https://i.imgur.com/CvHFB93.png'
+                          description = 'I see, ashen one, you have chosen Ranger.\n Manage your advantage with high speed and DPS.'
+                          icon = '🏹 Ranger'
                           break
                         case '🛡️':
                           aClass = 3
                           mpMultiplier = 0.9
                           hpMultiplier = 2.0
                           bpMultiplier = 0.85
-                          chooseClass.delete()
-                          const knight = new MessageEmbed()
-                            .setColor('#4B0082')
-                            .setAuthor(
-                              'Anunnaki',
-                              'https://i.imgur.com/CvHFB93.png'
-                            )
-                            .setImage('https://i.imgur.com/vbWA25x.png')
-                            .setTitle('🛡️ Knight')
-                            .setDescription(
-                              'I see, ashen one, you have chosen Knight.\n Now you can hold the entire enemies with your sword.'
-                            )
-                            .setFooter('Try a!status to see your status.', 'https://i.imgur.com/CvHFB93.png')
-                          await message.channel.send(knight)
+                          spMultiplier = 0.9
+                          image = 'https://i.imgur.com/vbWA25x.png'
+                          description = 'I see, ashen one, you have chosen Knight.\n Now you can hold the entire enemies with your sword.'
+                          icon = '🛡️ Knight'
                           break
                         case '🗡️':
                           aClass = 4
                           mpMultiplier = 0.65
                           hpMultiplier = 0.6
                           bpMultiplier = 1.95
-                          chooseClass.delete()
-                          const rogue = new MessageEmbed()
-                            .setColor('#4B0082')
-                            .setAuthor(
-                              'Anunnaki',
-                              'https://i.imgur.com/CvHFB93.png'
-                            )
-                            .setImage('https://i.imgur.com/kM0yhFF.png')
-                            .setTitle('🗡️ Rogue')
-                            .setDescription(
-                              'I see, ashen one, you have chosen Rogue.\n Now you can burst enemies by their blind eyes.'
-                            )
-                            .setFooter('Try a!status to see your status.', 'https://i.imgur.com/CvHFB93.png')
-                          await message.channel.send(rogue)
+                          spMultiplier = 1.7
+                          image = 'https://i.imgur.com/kM0yhFF.png'
+                          description = 'I see, ashen one, you have chosen Rogue.\n Now you can burst enemies by their blind eyes.'
+                          icon = '🗡️ Rogue'
                           break
                         case '🪓':
                           aClass = 5
                           mpMultiplier = 1.2
                           hpMultiplier = 1.6
                           bpMultiplier = 1.3
-                          chooseClass.delete()
-                          const berserker = new MessageEmbed()
-                            .setColor('#4B0082')
-                            .setAuthor(
-                              'Anunnaki',
-                              'https://i.imgur.com/CvHFB93.png'
-                            )
-                            .setImage('https://i.imgur.com/fU84qPG.png')
-                            .setTitle('🪓 Berserker')
-                            .setDescription(
-                              'I see, ashen one, you have chosen Berserker.\n Now you can taste their bloods with your axe.'
-                            )
-                            .setFooter('Try a!status to see your status.', 'https://i.imgur.com/CvHFB93.png')
-                          await message.channel.send(berserker)
+                          spMultiplier = 1.3
+                          image = 'https://i.imgur.com/fU84qPG.png'
+                          description = 'I see, ashen one, you have chosen Berserker.\n Now you can taste their bloods with your axe.'
+                          icon = '🪓 Berserker'
                           break
                         case '✝️':
                           aClass = 6
                           mpMultiplier = 1.2
-                          hpMultiplier = 1.8
+                          hpMultiplier = 1.6
                           bpMultiplier = 1.7
-                          chooseClass.delete()
-                          const paladin = new MessageEmbed()
-                            .setColor('#4B0082')
-                            .setAuthor(
-                              'Anunnaki',
-                              'https://i.imgur.com/CvHFB93.png'
-                            )
-                            .setImage('https://i.imgur.com/mlrdFWC.jpg')
-                            .setTitle('✝️ Paladin')
-                            .setDescription(
-                              'I see, ashen one, you have chosen Paladin.\n Go and blind your enemies with your faith.'
-                            )
-                            .setFooter('Try a!status to see your status.', 'https://i.imgur.com/CvHFB93.png')
-                          await message.channel.send(paladin)
+                          spMultiplier = 0.9
+                          image = 'https://i.imgur.com/mlrdFWC.jpg'
+                          description = 'I see, ashen one, you have chosen Paladin.\n Go and blind your enemies with your faith.'
+                          icon = '✝️ Paladin'
                           break
                       }
+
+                      const embedF = new MessageEmbed()
+                      .setColor('#4B0082')
+                      .setAuthor(
+                        'Anunnaki',
+                        'https://i.imgur.com/CvHFB93.png'
+                      )
+                      .setImage(image)
+                      .setTitle(icon)
+                      .setDescription(description)
+                      .setFooter('Try a!status to see your status.', 'https://i.imgur.com/CvHFB93.png')
+                    await message.channel.send(embedF)
+
                       await Levels.createUser(message.author.id, guildId)
 
                       const newPlayer = new players({
@@ -376,6 +292,10 @@ export class StartCommand implements Command {
                         hp: 100 * hpMultiplier,
                         power: 10 * bpMultiplier,
                         mp: 100 * mpMultiplier,
+                        speed: 5 * spMultiplier,
+                        mpMultiplier: mpMultiplier,
+                        hpMultiplier: hpMultiplier,
+                        bpMultiplier: bpMultiplier,
                       })
 
                       await newPlayer.save()

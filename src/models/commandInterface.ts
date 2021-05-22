@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable prettier/prettier */
 import { Message } from 'discord.js'
 
 export default interface Command {
@@ -12,4 +14,5 @@ export default interface Command {
 
   /** Execute the command. */
   run(parsedUserCommand: Message, ...args: any[]): Promise<void>
+  
 }
