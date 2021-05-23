@@ -1,13 +1,14 @@
 /* eslint-disable prettier/prettier */
 import Discord, { Message } from 'discord.js'
-import { DISCORD_TOKEN } from './config/secrets'
+import { DISCORD_TOKEN, URL } from './config/secrets'
 import CommandHandler from './commandHandler'
 import config from './config/botConfig'
 import Levels from 'discord-xp'
 
-Levels.setURL(
-  'mongodb+srv://AndreyLB:4998pk98@cluster0.o48ez.mongodb.net/annunaki'
-)
+// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+const url: string = URL!
+
+Levels.setURL(url)
 
 const client = new Discord.Client()
 

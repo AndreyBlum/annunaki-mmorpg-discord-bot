@@ -57,6 +57,7 @@ export class SkillsCommand implements Command {
         { name: 'Can use?', value: user.level >= skill1.levelRequired ? '✅' : '🚫', inline: true }
         )
       .setImage(skill1.image)  
+      .setFooter('The image will change later when the dev be inspired to draw', 'https://i.imgur.com/CvHFB93.png')
       message.channel.send(s1embed)
     break;
     case 'a!skill 2':
@@ -76,6 +77,7 @@ export class SkillsCommand implements Command {
         { name: 'Can use?', value: user.level >= skill2.levelRequired ? '✅' : '🚫', inline: true }
         )
       .setImage(skill2.image)  
+      .setFooter('The image will change later when the dev be inspired to draw', 'https://i.imgur.com/CvHFB93.png')
       message.channel.send(s2embed)
       break;
       case 'a!skill 3':
@@ -95,6 +97,7 @@ export class SkillsCommand implements Command {
         { name: 'Can use?', value: user.level >= skill3.levelRequired ? '✅' : '🚫', inline: true }
         )
       .setImage(skill3.image)  
+      .setFooter('The image will change later when the dev be inspired to draw', 'https://i.imgur.com/CvHFB93.png')
       message.channel.send(s3embed)
       break;
     default:
@@ -112,6 +115,7 @@ export class SkillsCommand implements Command {
       {name: 'Skill 3', value: `3 - ${skill3.name}`, inline: true},
       )
       .setImage('https://i.pinimg.com/originals/c5/1f/d1/c51fd18920b1caf6dadb2afc41d0717d.png')
+      .setFooter('The image will change later when the dev be inspired to draw', 'https://i.imgur.com/CvHFB93.png')
       message.channel.send(sAllEmbed)
       break;
       }
