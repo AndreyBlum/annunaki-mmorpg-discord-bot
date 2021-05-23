@@ -31,7 +31,8 @@ export class StartCommand implements Command {
     if (user) {
       await message.channel.send('You already have started your adventure.')
     } else { 
-      await message.channel.send(`First thing first, choose your gender:\nMale or Female`).then(async (chooseGender) => {
+      await message.channel.send(`First thing first, choose your gender:\nMale or Female`)
+      .then(async (chooseGender) => {
         const gEmojis = gender
         gEmojis.forEach(async (gEmoji) => {
           await chooseGender.react(gEmoji)
@@ -110,6 +111,7 @@ export class StartCommand implements Command {
                   )
                   .then(async (collected) => {
                     const selectedClass = collected.first()?.emoji.name
+                    chooseClass.delete()
 
                     if (selectedGender === '♂') {
                       switch (selectedClass) {

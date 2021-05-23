@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 type BotConfig = {
   prefix: string /** Prefix used for bot commands. */
 }
@@ -5,5 +6,4 @@ type BotConfig = {
 const config: BotConfig = {
   prefix: 'a!',
 }
-
 export default config

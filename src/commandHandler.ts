@@ -10,6 +10,7 @@ import {
   VsfCommand,
   ClassCommand,
   SkillsCommand,
+  ResetCommand,
 } from './commands'
 import Command from './models/commandInterface'
 import { CommandParser } from './models/commandParser'
@@ -29,7 +30,8 @@ export default class CommandHandler {
       StartCommand,
       CringeCommand,
       ClassCommand,
-      SkillsCommand
+      SkillsCommand,
+      ResetCommand
     ]
 
     this.commands = commandClasses.map((commandClass) => new commandClass())

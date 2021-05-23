@@ -35,6 +35,10 @@ export class ClassCommand implements Command {
                   value: 'Knights tanks very well and do a medium damage.',
                   inline: true,
                 },
+                { 
+                  name: '\u200B', 
+                  value: '\u200B', 
+                },
                 {
                   name: '🗡️',
                   value: 'Rogues have a good speed and good DPS.',
@@ -42,7 +46,7 @@ export class ClassCommand implements Command {
                 },
                 {
                   name: '🪓',
-                  value: 'Berseker have a medium resistance, and a good DPS.',
+                  value: 'Berserker have a medium resistance, and a good DPS.',
                   inline: true,
                 },
                 {
