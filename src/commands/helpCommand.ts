@@ -10,6 +10,7 @@ export class HelpCommand implements Command {
   }
 
   async run(message: Message, commandsNames: string[]): Promise<void> {
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const embed = new MessageEmbed()
       .setColor('#4B0082')
       .setAuthor('Anunnaki', 'https://i.imgur.com/CvHFB93.png')

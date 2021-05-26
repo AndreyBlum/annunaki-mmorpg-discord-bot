@@ -2,10 +2,7 @@
 import Command from '../models/commandInterface'
 import { Message, MessageEmbed } from 'discord.js'
 import Levels from 'discord-xp'
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const players = require('../models/Player')
-
-
+import { User } from '../models/User'
 export class StartCommand implements Command {
   commandNames = ['start']
 
@@ -190,23 +187,16 @@ export class StartCommand implements Command {
 
                       await Levels.createUser(message.author.id, guildId)
 
-                      const newPlayer = new players({
-                        userID: userId,
-                        guildID: guildId,
-                        classeID: aClass,
-                        gender: selectedGender,
-                        hp: 100 * hpMultiplier,
-                        power: 10 * bpMultiplier,
-                        mp: 100 * mpMultiplier,
-                        speed: 5 * spMultiplier,
-                        mpMultiplier: mpMultiplier,
-                        hpMultiplier: hpMultiplier,
-                        bpMultiplier: bpMultiplier,
-                      })
-
-                      await newPlayer.save()
-                      .catch((e: unknown) => 
-                      console.log(`Failed to create user: ${e}`));
+                      await User.createPlayer(
+                        userId,
+                        guildId,
+                        aClass,
+                        selectedGender,
+                        hpMultiplier,
+                        bpMultiplier,
+                        mpMultiplier,
+                        spMultiplier
+                      )
 
                     } else {
                       switch (selectedClass) {
@@ -286,23 +276,16 @@ export class StartCommand implements Command {
 
                       await Levels.createUser(message.author.id, guildId)
 
-                      const newPlayer = new players({
-                        userID: userId,
-                        guildID: guildId,
-                        classeID: aClass,
-                        gender: selectedGender,
-                        hp: 100 * hpMultiplier,
-                        power: 10 * bpMultiplier,
-                        mp: 100 * mpMultiplier,
-                        speed: 5 * spMultiplier,
-                        mpMultiplier: mpMultiplier,
-                        hpMultiplier: hpMultiplier,
-                        bpMultiplier: bpMultiplier,
-                      })
-
-                      await newPlayer.save()
-                      .catch((e: unknown) => 
-                      console.log(`Failed to create user: ${e}`));
+                      await User.createPlayer(
+                        userId,
+                        guildId,
+                        aClass,
+                        selectedGender,
+                        hpMultiplier,
+                        bpMultiplier,
+                        mpMultiplier,
+                        spMultiplier
+                      )
                     }
                   })
               })

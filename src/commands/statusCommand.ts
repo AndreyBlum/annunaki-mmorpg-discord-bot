@@ -3,9 +3,7 @@
 import Command from '../models/commandInterface'
 import { Message, MessageEmbed } from 'discord.js'
 import Levels from 'discord-xp'
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const players = require('../models/Player')
-
+import { User } from '../models/User'
 export class StatusCommand implements Command {
   commandNames = 'status'
   help(commandPrefix: string): string {
@@ -18,10 +16,7 @@ export class StatusCommand implements Command {
     const user = await Levels.fetch(message.author.id, guildId)
 
     if (user) {
-      const player = await players.findOne({
-        userID: userId,
-        guildID: guildId
-      });
+      const player = await User.fetchPlayer(userId, guildId)
       
       let rpgClass = player.classeID
 
@@ -61,7 +56,7 @@ export class StatusCommand implements Command {
           { name: 'HP', value: `❤ ${player.hp}`, inline: true },
           { name: 'Mana', value: `💧 ${player.mp}`, inline: true},
           { name: 'Base Power', value: `🔥 ${player.power}`, inline: true},
-          { name: 'Speed', value: player.speed > 9 ? `👟 ${player.speed}` : `👟 0${player.speed}` , inline: true }
+          { name: 'Speed', value: player.speed > 9 ? `👟 ${player.speed}` : `👟 0${player.speed}` , inline: true },
         )
         .setThumbnail(message.author.displayAvatarURL({ format: 'png', dynamic: true}))
         .setFooter('Forged with fire and blood only to serve you', 'https://i.imgur.com/CvHFB93.png')

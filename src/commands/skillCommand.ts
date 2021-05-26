@@ -3,6 +3,7 @@
 import Command from '../models/commandInterface'
 import { Message, MessageEmbed } from 'discord.js'
 import Levels from 'discord-xp'
+import { User } from '../models/User'
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const skills = require('../models/Skill')
 // eslint-disable-next-line @typescript-eslint/no-var-requires
@@ -21,10 +22,8 @@ export class SkillsCommand implements Command {
   const user = await Levels.fetch(message.author.id, guildId)
 
   if (user) {
-    const player = await players.findOne({
-      userID: userId,
-      guildID: guildId
-      });
+    const player = await User.fetchPlayer(userId, guildId)
+    
     const skill1 = await skills.findOne({
         classeID: player.classeID,
         position: 1
