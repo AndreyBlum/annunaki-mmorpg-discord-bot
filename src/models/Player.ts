@@ -12,6 +12,7 @@ const PlayerSchema = new mongoose.Schema({
   mpMultiplier: { type: Number },
   hpMultiplier: { type: Number },
   bpMultiplier: { type: Number },
+  spMultiplier: { type: Number },
 })
 
 module.exports = mongoose.model('players', PlayerSchema)

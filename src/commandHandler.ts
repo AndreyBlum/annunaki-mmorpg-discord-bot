@@ -11,6 +11,7 @@ import {
   ClassCommand,
   SkillsCommand,
   ResetCommand,
+  WildCommand,
 } from './commands'
 import Command from './models/commandInterface'
 import { CommandParser } from './models/commandParser'
@@ -23,7 +24,7 @@ export default class CommandHandler {
   constructor(prefix: string) {
     const commandClasses = [
       HelpCommand,
-      GreetCommand,
+      WildCommand,
       StatusCommand,
       NickCommand,
       VsfCommand,
@@ -31,7 +32,7 @@ export default class CommandHandler {
       CringeCommand,
       ClassCommand,
       SkillsCommand,
-      ResetCommand
+      ResetCommand,
     ]
 
     this.commands = commandClasses.map((commandClass) => new commandClass())

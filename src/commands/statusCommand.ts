@@ -3,7 +3,7 @@
 import Command from '../models/commandInterface'
 import { Message, MessageEmbed } from 'discord.js'
 import Levels from 'discord-xp'
-import { User } from '../models/User'
+import { User } from '../controllers/UserController'
 export class StatusCommand implements Command {
   commandNames = 'status'
   help(commandPrefix: string): string {
@@ -40,7 +40,7 @@ export class StatusCommand implements Command {
         rpgClass = '✝️ Paladin'
         break;
       }
-
+      const xpForNextLevel = Math.floor(Levels.xpFor(user.level+1) - user.xp)
       const embed = new MessageEmbed()
         .setColor('#4B0082')
         .setAuthor(
@@ -49,8 +49,8 @@ export class StatusCommand implements Command {
         )
         .addFields(
           { name: 'Class', value: rpgClass, inline: true},
-          { name: 'LVL:', value: user.level > 9 ? `⚡ ${user.level}\n Lefts **${Levels.xpFor(user.level+1)}XP** to level ${user.level+1}` 
-          : `⚡ 0${user.level}\n Lefts **${Levels.xpFor(user.level+1)}XP** to level 0${user.level+1}`, inline: true},
+          { name: 'LVL:', value: user.level > 9 ? `⚡ ${user.level}\n Lefts **${xpForNextLevel}XP** to level ${user.level+1}` 
+          : `⚡ 0${user.level}\n Lefts **${xpForNextLevel}XP** to level 0${user.level+1}`, inline: true},
           { name: 'Gender:', value: player.gender, inline: true },
           { name: '\u200B', value: '\u200B' },
           { name: 'HP', value: `❤ ${player.hp}`, inline: true },
@@ -63,7 +63,7 @@ export class StatusCommand implements Command {
       await message.channel.send(embed)
     } else {
       message.channel.send(
-        'You have to start an adventure first using a!start.'
+        'You have to start an adventure first using **a!start**.'
       )
     }
   }

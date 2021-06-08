@@ -13,6 +13,4 @@ const SkillSchema = new mongoose.Schema({
   position: { type: Number }
 })
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-
 module.exports = mongoose.model('skills', SkillSchema)

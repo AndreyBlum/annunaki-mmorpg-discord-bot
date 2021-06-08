@@ -2,7 +2,7 @@
 import Command from '../models/commandInterface'
 import { Message, MessageEmbed } from 'discord.js'
 import Levels from 'discord-xp'
-import { User } from '../models/User'
+import { User } from '../controllers/UserController'
 export class StartCommand implements Command {
   commandNames = ['start']
 
@@ -115,7 +115,7 @@ export class StartCommand implements Command {
                         case '🧙':
                           aClass = 1
                           mpMultiplier = 2
-                          hpMultiplier = 0.65
+                          hpMultiplier = 1.1
                           bpMultiplier = 1.7
                           spMultiplier = 1.2
                           image = 'https://i.imgur.com/4oBwRO2.jpg'
@@ -125,7 +125,7 @@ export class StartCommand implements Command {
                         case '🏹':
                           aClass = 2
                           mpMultiplier = 1
-                          hpMultiplier = 0.8
+                          hpMultiplier = 1.2
                           bpMultiplier = 1.45
                           spMultiplier = 1.5
                           image = 'https://i.imgur.com/VlSgXTl.jpg'
@@ -134,18 +134,18 @@ export class StartCommand implements Command {
                           break
                         case '🛡️':
                           aClass = 3
-                          mpMultiplier = 0.9
+                          mpMultiplier = 1.1
                           hpMultiplier = 2
-                          bpMultiplier = 0.85
-                          spMultiplier = 0.9
+                          bpMultiplier = 1.1
+                          spMultiplier = 1.1
                           image = 'https://i.imgur.com/XhlhmuY.jpg'
                           description = 'I see, ashen one, you have chosen Knight.\n Now you can hold the entire enemies with your sword.'
                           icon = '🛡️ Knight'
                           break
                         case '🗡️':
                           aClass = 4
-                          mpMultiplier = 0.65
-                          hpMultiplier = 0.6
+                          mpMultiplier = 1.1
+                          hpMultiplier = 1.1
                           bpMultiplier = 1.95
                           spMultiplier = 1.7
                           image = 'https://i.imgur.com/cnFXKuV.jpg'
@@ -167,7 +167,7 @@ export class StartCommand implements Command {
                           mpMultiplier = 1.2
                           hpMultiplier = 1.6
                           bpMultiplier = 1.7
-                          spMultiplier = 0.9
+                          spMultiplier = 1.1
                           image = 'https://i.imgur.com/FRVdszx.jpg'
                           description = 'I see, ashen one, you have chosen Paladin.\n Go and blind your enemies with your faith.'
                           icon = '✝️ Paladin'
@@ -195,15 +195,15 @@ export class StartCommand implements Command {
                         hpMultiplier,
                         bpMultiplier,
                         mpMultiplier,
-                        spMultiplier
+                        spMultiplier,
                       )
-
+                      
                     } else {
                       switch (selectedClass) {
                         case '🧙':
                           aClass = 1
-                          mpMultiplier = 2.0
-                          hpMultiplier = 0.65
+                          mpMultiplier = 2
+                          hpMultiplier = 1.1
                           bpMultiplier = 1.7
                           spMultiplier = 1.2
                           image = 'https://i.imgur.com/m0duawK.jpg'
@@ -213,7 +213,7 @@ export class StartCommand implements Command {
                         case '🏹':
                           aClass = 2
                           mpMultiplier = 1
-                          hpMultiplier = 0.8
+                          hpMultiplier = 1.2
                           bpMultiplier = 1.45
                           spMultiplier = 1.5
                           image = 'https://i.imgur.com/CvHFB93.png'
@@ -222,18 +222,18 @@ export class StartCommand implements Command {
                           break
                         case '🛡️':
                           aClass = 3
-                          mpMultiplier = 0.9
-                          hpMultiplier = 2.0
-                          bpMultiplier = 0.85
-                          spMultiplier = 0.9
+                          mpMultiplier = 1.1
+                          hpMultiplier = 2
+                          bpMultiplier = 1.1
+                          spMultiplier = 1.1
                           image = 'https://i.imgur.com/vbWA25x.png'
                           description = 'I see, ashen one, you have chosen Knight.\n Now you can hold the entire enemies with your sword.'
                           icon = '🛡️ Knight'
                           break
                         case '🗡️':
                           aClass = 4
-                          mpMultiplier = 0.65
-                          hpMultiplier = 0.6
+                          mpMultiplier = 1.1
+                          hpMultiplier = 1.1
                           bpMultiplier = 1.95
                           spMultiplier = 1.7
                           image = 'https://i.imgur.com/kM0yhFF.png'
@@ -255,7 +255,7 @@ export class StartCommand implements Command {
                           mpMultiplier = 1.2
                           hpMultiplier = 1.6
                           bpMultiplier = 1.7
-                          spMultiplier = 0.9
+                          spMultiplier = 1.1
                           image = 'https://i.imgur.com/mlrdFWC.jpg'
                           description = 'I see, ashen one, you have chosen Paladin.\n Go and blind your enemies with your faith.'
                           icon = '✝️ Paladin'
@@ -284,7 +284,7 @@ export class StartCommand implements Command {
                         hpMultiplier,
                         bpMultiplier,
                         mpMultiplier,
-                        spMultiplier
+                        spMultiplier,
                       )
                     }
                   })

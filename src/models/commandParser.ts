@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Message } from 'discord.js'
 
 /** A user-given command extracted from a message. */
