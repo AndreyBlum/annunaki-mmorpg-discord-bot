@@ -6,6 +6,7 @@ const PlayerSchema = new mongoose.Schema({
   classeID: { type: Number },
   gender: { type: String },
   hp: { type: Number },
+  defense: { type: Number },
   power: { type: Number },
   mp: { type: Number },
   speed: { type: Number },

@@ -3,16 +3,29 @@ const mobs = require('../models/Mob')
 
 export class Mob {
   // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-  static async fetchMob(mobId: string) {
+  static async fetchMob(mobId: number) {
     const mob = await mobs.findOne({
       id: mobId,
     })
 
     return await mob
   }
+  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+  static async fetchAllMobs() {
+    const mob = await mobs.find()
+    return await mob
+  }
 
   // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-  static async randomXp(mobId: string) {
+  static async fetchAllMobsByScene(sceneId: number) {
+    const mob = await mobs.find({ sceneID: sceneId })
+    console.log('mob vvv')
+    console.log(mob)
+    return await mob
+  }
+
+  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+  static async randomXp(mobId: number) {
     const mob = await this.fetchMob(mobId)
     let min = mob.minXp
     let max = mob.maxXp
@@ -23,7 +36,7 @@ export class Mob {
   }
 
   // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-  static async calcMobHp(mobId: string) {
+  static async calcMobHp(mobId: number) {
     const mob = await this.fetchMob(mobId)
     let min = mob.minHp
     let max = mob.maxHp

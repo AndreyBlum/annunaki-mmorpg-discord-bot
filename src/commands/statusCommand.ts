@@ -4,6 +4,7 @@ import Command from '../models/commandInterface'
 import { Message, MessageEmbed } from 'discord.js'
 import Levels from 'discord-xp'
 import { User } from '../controllers/UserController'
+import { Utils } from '../utils'
 export class StatusCommand implements Command {
   commandNames = 'status'
   help(commandPrefix: string): string {
@@ -19,27 +20,7 @@ export class StatusCommand implements Command {
       const player = await User.fetchPlayer(userId, guildId)
       
       let rpgClass = player.classeID
-
-      switch (rpgClass) {
-        case 1:
-        rpgClass = '🧙 Mage'
-        break;
-        case 2:
-        rpgClass = '🏹 Ranged'
-        break;
-        case 3:
-        rpgClass = '🛡️ Knight'
-        break;
-        case 4:
-        rpgClass = '🗡️ Rogue'
-        break;
-        case 5:
-        rpgClass = '🪓 Berserker'
-        break;
-        case 6:
-        rpgClass = '✝️ Paladin'
-        break;
-      }
+      rpgClass = await Utils.setRpgClassValue(rpgClass)
       const xpForNextLevel = Math.floor(Levels.xpFor(user.level+1) - user.xp)
       const embed = new MessageEmbed()
         .setColor('#4B0082')
@@ -49,14 +30,18 @@ export class StatusCommand implements Command {
         )
         .addFields(
           { name: 'Class', value: rpgClass, inline: true},
+          { name: '\u200B', value: '\u200B', inline: true },
           { name: 'LVL:', value: user.level > 9 ? `⚡ ${user.level}\n Lefts **${xpForNextLevel}XP** to level ${user.level+1}` 
-          : `⚡ 0${user.level}\n Lefts **${xpForNextLevel}XP** to level 0${user.level+1}`, inline: true},
-          { name: 'Gender:', value: player.gender, inline: true },
-          { name: '\u200B', value: '\u200B' },
+          : `⚡ 0${user.level}\n *Lefts **${xpForNextLevel}XP** to level 0${user.level+1}*`, inline: true},
+          { name: 'Gender', value: player.gender, inline: true },
+          { name: '\u200B', value: '\u200B', inline: true },
           { name: 'HP', value: `❤ ${player.hp}`, inline: true },
           { name: 'Mana', value: `💧 ${player.mp}`, inline: true},
+          { name: '\u200B', value: '\u200B', inline: true },
           { name: 'Base Power', value: `🔥 ${player.power}`, inline: true},
           { name: 'Speed', value: player.speed > 9 ? `👟 ${player.speed}` : `👟 0${player.speed}` , inline: true },
+          { name: '\u200B', value: '\u200B', inline: true },
+          { name: 'Defense', value: `🛡 ${player.defense}`, inline: true }
         )
         .setThumbnail(message.author.displayAvatarURL({ format: 'png', dynamic: true}))
         .setFooter('Forged with fire and blood only to serve you', 'https://i.imgur.com/CvHFB93.png')

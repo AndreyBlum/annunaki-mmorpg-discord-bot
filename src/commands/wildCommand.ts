@@ -3,9 +3,8 @@ import Command from '../models/commandInterface'
 import { Message, MessageEmbed } from 'discord.js'
 import { User } from '../controllers/UserController'
 import { Scene } from '../controllers/SceneController'
-import { Mob } from '../controllers/MobController'
 import Levels from 'discord-xp'
-import { Effect } from '../controllers/EffectController'
+import { Battle } from '../controllers/BattleController'
 
 export class WildCommand implements Command {
   commandNames = ['wild', 'wd']
@@ -58,39 +57,38 @@ export class WildCommand implements Command {
         chooseNumber.delete()
      switch (selectedNumber) {
        case '1️⃣':
-         if (await Scene.validatePermission('1', userId, guildId) === true) {
-          const mob = await Mob.fetchMob('1')
-          const randomXp = await Mob.randomXp('1')
-          const mobHp = await Mob.calcMobHp('1')
-          const playerHp = player.hp
-          message.channel.send(`${message.author.username} has won!`)
-          message.channel.send(`The mob that you killed is ${mob.name} and give you ${randomXp} of XP`)
-          Levels.appendXp(userId, guildId, randomXp)
-          User.hasLeveledUp(message, randomXp)
-          // do {
-          //   message.channel.send('duelo')
-          //   Math.floor(playerHp - mob.bp)
-          // }
-          // while(playerHp >= 0 && mobHp) {
-          //   if (player.hp <= 0) {
-          //     message.channel.send(`${mob.name} has won`)
-          //   } else {
-          //     message.channel.send(`${message.author.username} has won!`)
-          //     message.channel.send(`The mob that you killed is ${mob.name} and give you ${randomXp} of XP`)
-          //     Levels.appendXp(userId, guildId, randomXp)
-          //     User.hasLeveledUp(message, randomXp)
-          //   }
-          // }
+         if (await Scene.validatePermission(1, userId, guildId) === true) {
+          Battle.battlePveAction(message, scene[0].id)
+          // message.channel.send(`${message.author.username} has won!`)
+          // message.channel.send(`The mob that you killed is ${mob.name} and give you ${randomXp} of XP`)
+          // Levels.appendXp(userId, guildId, randomXp)
+          // User.hasLeveledUp(message, randomXp)
          } else {
           message.channel.send('You cannot enter')
          }
          break;
          case '2️⃣':
-           message.channel.send('Entering in area 2')
+          if (await Scene.validatePermission(1, userId, guildId) === true) {
+            Battle.battlePveAction(message, scene[1].id)
+            // message.channel.send(`${message.author.username} has won!`)
+            // message.channel.send(`The mob that you killed is ${mob.name} and give you ${randomXp} of XP`)
+            // Levels.appendXp(userId, guildId, randomXp)
+            // User.hasLeveledUp(message, randomXp)
+           } else {
+            message.channel.send('You cannot enter')
+           }
            
            break;
            case '3️⃣':
-             message.channel.send('Entering in area 3')
+            if (await Scene.validatePermission('1', userId, guildId) === true) {
+              Battle.battlePveAction(message, scene[2].id)
+              // message.channel.send(`${message.author.username} has won!`)
+              // message.channel.send(`The mob that you killed is ${mob.name} and give you ${randomXp} of XP`)
+              // Levels.appendXp(userId, guildId, randomXp)
+              // User.hasLeveledUp(message, randomXp)
+             } else {
+              message.channel.send('You cannot enter')
+             }
              
              break;
              case '4️⃣':

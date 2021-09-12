@@ -20,6 +20,7 @@ export class StartCommand implements Command {
     let hpMultiplier = 0
     let bpMultiplier = 0
     let spMultiplier = 0
+    let defMultiplier = 0
     let image = ''
     let description = ''
     let icon = ''
@@ -114,6 +115,7 @@ export class StartCommand implements Command {
                       switch (selectedClass) {
                         case '🧙':
                           aClass = 1
+                          defMultiplier = 1.1
                           mpMultiplier = 2
                           hpMultiplier = 1.1
                           bpMultiplier = 1.7
@@ -124,6 +126,7 @@ export class StartCommand implements Command {
                           break
                         case '🏹':
                           aClass = 2
+                          defMultiplier = 1.2
                           mpMultiplier = 1
                           hpMultiplier = 1.2
                           bpMultiplier = 1.45
@@ -134,6 +137,7 @@ export class StartCommand implements Command {
                           break
                         case '🛡️':
                           aClass = 3
+                          defMultiplier = 1.8
                           mpMultiplier = 1.1
                           hpMultiplier = 2
                           bpMultiplier = 1.1
@@ -144,6 +148,7 @@ export class StartCommand implements Command {
                           break
                         case '🗡️':
                           aClass = 4
+                          defMultiplier = 1.1
                           mpMultiplier = 1.1
                           hpMultiplier = 1.1
                           bpMultiplier = 1.95
@@ -154,6 +159,7 @@ export class StartCommand implements Command {
                           break
                         case '🪓':
                           aClass = 5
+                          defMultiplier = 1.5
                           mpMultiplier = 1.2
                           hpMultiplier = 1.6
                           bpMultiplier = 1.3
@@ -164,6 +170,7 @@ export class StartCommand implements Command {
                           break
                         case '✝️':
                           aClass = 6
+                          defMultiplier = 1.6
                           mpMultiplier = 1.2
                           hpMultiplier = 1.6
                           bpMultiplier = 1.7
@@ -196,12 +203,14 @@ export class StartCommand implements Command {
                         bpMultiplier,
                         mpMultiplier,
                         spMultiplier,
+                        defMultiplier
                       )
                       
                     } else {
                       switch (selectedClass) {
                         case '🧙':
                           aClass = 1
+                          defMultiplier = 1.1
                           mpMultiplier = 2
                           hpMultiplier = 1.1
                           bpMultiplier = 1.7
@@ -212,6 +221,7 @@ export class StartCommand implements Command {
                           break
                         case '🏹':
                           aClass = 2
+                          defMultiplier = 1.2
                           mpMultiplier = 1
                           hpMultiplier = 1.2
                           bpMultiplier = 1.45
@@ -222,6 +232,7 @@ export class StartCommand implements Command {
                           break
                         case '🛡️':
                           aClass = 3
+                          defMultiplier = 1.8
                           mpMultiplier = 1.1
                           hpMultiplier = 2
                           bpMultiplier = 1.1
@@ -232,6 +243,7 @@ export class StartCommand implements Command {
                           break
                         case '🗡️':
                           aClass = 4
+                          defMultiplier = 1.1
                           mpMultiplier = 1.1
                           hpMultiplier = 1.1
                           bpMultiplier = 1.95
@@ -242,6 +254,7 @@ export class StartCommand implements Command {
                           break
                         case '🪓':
                           aClass = 5
+                          defMultiplier = 1.5
                           mpMultiplier = 1.2
                           hpMultiplier = 1.6
                           bpMultiplier = 1.3
@@ -252,6 +265,7 @@ export class StartCommand implements Command {
                           break
                         case '✝️':
                           aClass = 6
+                          defMultiplier = 1.6
                           mpMultiplier = 1.2
                           hpMultiplier = 1.6
                           bpMultiplier = 1.7
@@ -285,6 +299,7 @@ export class StartCommand implements Command {
                         bpMultiplier,
                         mpMultiplier,
                         spMultiplier,
+                        defMultiplier
                       )
                     }
                   })
