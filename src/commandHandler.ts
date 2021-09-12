@@ -2,7 +2,6 @@
 import { Message } from 'discord.js'
 import {
   CringeCommand,
-  GreetCommand,
   HelpCommand,
   StartCommand,
   StatusCommand,
@@ -12,6 +11,7 @@ import {
   SkillsCommand,
   ResetCommand,
   WildCommand,
+  DuelCommand,
 } from './commands'
 import Command from './models/commandInterface'
 import { CommandParser } from './models/commandParser'
@@ -27,12 +27,12 @@ export default class CommandHandler {
       WildCommand,
       StatusCommand,
       NickCommand,
-      VsfCommand,
       StartCommand,
-      CringeCommand,
+      VsfCommand,
       ClassCommand,
       SkillsCommand,
       ResetCommand,
+      DuelCommand,
     ]
 
     this.commands = commandClasses.map((commandClass) => new commandClass())

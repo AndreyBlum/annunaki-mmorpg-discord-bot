@@ -1,12 +1,12 @@
 /* eslint-disable prettier/prettier */
 import mongoose from 'mongoose'
 const MobSchema = new mongoose.Schema({
-  id: { type: String },
+  id: { type: Number },
   minHp: { type: Number },
   maxHp: { type: Number },
   bp: { type: Number },
   bpMultiplier: { type: Number },
-  sceneID: { type: String },
+  sceneID: { type: Number },
   name: { type: String },
   type: { type: String },
   image: { type: String },

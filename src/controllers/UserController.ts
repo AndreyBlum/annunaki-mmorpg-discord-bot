@@ -27,6 +27,7 @@ export class User {
     bpMultiplier: number,
     mpMultiplier: number,
     spMultiplier: number,
+    defMultiplier: number,
     ) {
 
     const newPlayer = new players({
@@ -38,6 +39,7 @@ export class User {
         power: Math.floor(10 * bpMultiplier),
         mp: Math.floor(100 * mpMultiplier),
         speed: Math.floor(5 * spMultiplier),
+        defense: Math.floor(10 * defMultiplier),
         mpMultiplier: mpMultiplier,
         hpMultiplier: hpMultiplier,
         bpMultiplier: bpMultiplier,
@@ -48,36 +50,37 @@ export class User {
       console.log(`Failed to create user: ${e}`));
   }
 
-  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-  static async appendMana(userId: string, guildId: string, mana: number) {
+  static async appendMana(userId: string, guildId: string, mana: number): Promise<void> {
     const player = await this.fetchPlayer(userId, guildId)
     player.mp += mana
     await player.save().catch((e: unknown) => console.log(`Error appending mana: ${e}`))
   }
 
-   // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-  static async appendPower(userId: string, guildId: string, power: number) {
+  static async appendPower(userId: string, guildId: string, power: number): Promise<void> {
     const player = await this.fetchPlayer(userId, guildId)
     player.power += power
     await player.save().catch((e: unknown) => console.log(`Error appending power: ${e}`))
   }
 
-   // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-  static async appendHp(userId: string, guildId: string, hp: number) {
+  static async appendHp(userId: string, guildId: string, hp: number): Promise<void> {
     const player = await this.fetchPlayer(userId, guildId)
     player.hp += hp
     await player.save().catch((e: unknown) => console.log(`Error appending hp: ${e}`))
   }
 
-   // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-  static async appendSpeed(userId: string, guildId: string, speed: number) {
+  static async appendSpeed(userId: string, guildId: string, speed: number): Promise<void> {
     const player = await this.fetchPlayer(userId, guildId)
     player.speed += speed
     await player.save().catch((e: unknown) => console.log(`Error appending speed: ${e}`))
   }
 
-  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-  static async hasLeveledUp(message: Message, xp: number) {
+  static async appendDefense(userId: string, guildId: string, defense: number): Promise<void> {
+    const player = await this.fetchPlayer(userId, guildId)
+    player.defense += defense
+    await player.save().catch((e: unknown) => console.log(`Error appending defense: ${e}`))
+  }
+
+  static async hasLeveledUp(message: Message, xp: number): Promise<void> {
     const userId = message.author.id
     const guildId = message.guild?.id as string
     const user = await Levels.fetch(userId, guildId)
@@ -89,7 +92,7 @@ export class User {
     if(xp > xpForNextLevel) {
       const player = await this.fetchPlayer(userId, guildId)
       const mention = message.author.toString()
-      const levelUpEmojis = ['💧', '❤', '🔥', '👟']
+      const levelUpEmojis = ['💧', '❤', '🔥', '👟', '🛡']
       const upEmbed = new MessageEmbed()
       .setColor('#4B0082')
       .setAuthor(
@@ -104,6 +107,7 @@ export class User {
         { "name": '❤ Health Points', "value": player.hp, inline: true },
         { "name": '🔥 Power', "value": player.power, inline: true },
         { "name": '👟 Speed', "value": player.speed, inline: true },
+        { "name": '🛡 Defense', "value": player.defense, inline: true }
       )
       .setFooter('Forged with fire and blood only to serve you', 'https://i.imgur.com/CvHFB93.png')
       message.channel.send(upEmbed)
@@ -150,6 +154,13 @@ export class User {
                 attribute = Math.floor(player.speed * player.spMultiplier)
                 postAttribute = attribute - player.speed
                 User.appendSpeed(userId, guildId, postAttribute)
+              break;
+              case '🛡':
+                attributeName = '🛡 Defense'
+                preAttribute = player.defense
+                attribute = Math.floor(player.defense * player.defMultiplier)
+                postAttribute = attribute - player.defense
+                User.appendDefense(userId, guildId, postAttribute)
               break;
             }
           const postLevelUp = new MessageEmbed()

@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 import mongoose from 'mongoose'
 const SceneSchema = new mongoose.Schema({
-  id: { type: String },
+  id: { type: Number },
   name: { type: String },
   levelRequired: { type: String },
   difficulty: { type: String },
