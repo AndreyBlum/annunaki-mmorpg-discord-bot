@@ -1,1 +1,1 @@
-<h3>Hey yo, I am a MMORP Discord BOT forged in fire and blood only to serve you.</h3>
+<h3>Hey yo, I am a MMORPG Discord BOT forged in fire and blood only to serve you.</h3>
