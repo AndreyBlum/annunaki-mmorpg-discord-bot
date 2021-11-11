@@ -32,8 +32,6 @@ export class Scene {
   ): Promise<boolean> {
     const scene = await this.fetchScene(sceneId)
     const user = await Levels.fetch(userId, guildId)
-    console.log(scene)
-    console.log(sceneId)
     if (user.level >= scene.levelRequired) {
       return true
     } else {

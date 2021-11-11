@@ -38,7 +38,7 @@ export class Utils {
     }
     return rpgClass
   }
-  static async createDefaultEmbed(message: Message) {
+  static createDefaultEmbed(): MessageEmbed {
     const embed = new MessageEmbed()
       .setColor('#4B0082')
       .setAuthor(
@@ -47,5 +47,8 @@ export class Utils {
       )
       .setFooter('Forged with fire and blood only to serve you', 'https://i.imgur.com/CvHFB93.png')
       return embed
+  }
+  static setAuthorThumb(message: Message): string {
+    return message.author.displayAvatarURL({ format: 'png', dynamic: true })
   }
 }

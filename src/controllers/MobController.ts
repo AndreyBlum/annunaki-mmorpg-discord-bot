@@ -1,3 +1,5 @@
+import { Battle } from './BattleController'
+
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const mobs = require('../models/Mob')
 
@@ -19,8 +21,6 @@ export class Mob {
   // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   static async fetchAllMobsByScene(sceneId: number) {
     const mob = await mobs.find({ sceneID: sceneId })
-    console.log('mob vvv')
-    console.log(mob)
     return await mob
   }
 
@@ -44,5 +44,22 @@ export class Mob {
     max = Math.floor(max)
     const mobF = Math.floor(Math.random() * (max - min + 1)) + min
     return mobF
+  }
+
+  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+  static async calcMobDmg(mob: any, mobLevel: any) {
+    const bp = mob.bp
+    const bpMultiplier = mob.bpMultiplier
+    let damage
+    if (mobLevel == 0) {
+      damage = Math.floor(bp * bpMultiplier)
+      return damage
+    }
+    damage = Math.floor(bp * bpMultiplier * mobLevel)
+    const critical = Battle.criticalChance()
+    if (critical) {
+      damage = damage * 2
+    }
+    return damage
   }
 }

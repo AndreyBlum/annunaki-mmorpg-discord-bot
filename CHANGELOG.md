@@ -2,7 +2,7 @@
 [12/09/2021]
 
 ### Added
-* - Adding defense stats, duel command, utils class and starting to implementing PVE and PVP system
+* - Adding defense stats, duel command, CHANGELOG.md, utils class and starting to implementing PVE and PVP system
 
 ### Removed
 

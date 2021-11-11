@@ -5,8 +5,7 @@ const skills = require('../models/Skill')
 /* eslint-disable prettier/prettier */
 export class Skill {
 
-    // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-    static async fetchAllSkill(userId: string, guildId: string) {
+    static async fetchAllSkill(userId: string, guildId: string): Promise<unknown> {
         
     const player = await User.fetchPlayer(userId, guildId)
     
@@ -25,16 +24,44 @@ export class Skill {
     const playerSkills = [{skill1}, {skill2}, {skill3}] 
     return await playerSkills
     }
-    // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-    static async fetchSkill(skillId: number) {
+
+    static async fetchSkill(skillId: number): Promise<unknown> {
       const skill = await skills.findOne({
         skillID: skillId
     });
     return skill
     }
 
-  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-  static async fetchSkillByEmoji(emoji: unknown): Promise<string> {
+    static async fetchSkillByPositionAndClasseId(skillId: number, classId: number): Promise<unknown> {
+      const skill = await skills.findOne({
+        position: skillId,
+        classeID: classId
+    });
+    return skill
+    }
+
+    static async fetchSkillByPositionAndClasseIdAsEmoji(emoji: string, classId: number): Promise<any> {
+      let skill;
+      let number;
+    switch (emoji) {
+      case '1️⃣':
+        number = 1
+        skill = await this.fetchSkillByPositionAndClasseId(number, classId)
+        break;
+      case '2️⃣':
+        number = 2
+        skill = await this.fetchSkillByPositionAndClasseId(number, classId)
+        break;
+      case '3️⃣':
+        number = 3
+        skill = await this.fetchSkillByPositionAndClasseId(number, classId)    
+        break;
+      default:
+    }
+    return skill;
+  }
+
+  static async fetchSkillByEmoji(emoji: string): Promise<unknown> {
   let skill;
   let number;
     switch (emoji) {
