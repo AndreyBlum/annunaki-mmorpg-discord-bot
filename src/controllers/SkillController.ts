@@ -22,7 +22,7 @@ export class Skill {
       classeID: player.classeID,
       position: 3
     });
-    const playerSkills = [{skill1}, {skill2}, {skill3}] 
+    const playerSkills = [skill1, skill2, skill3] 
     return await playerSkills
     }
     // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
@@ -30,7 +30,7 @@ export class Skill {
       const skill = await skills.findOne({
         skillID: skillId
     });
-    return skill
+    return await skill
     }
 
   // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types

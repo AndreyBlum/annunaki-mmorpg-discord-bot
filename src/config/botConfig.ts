@@ -7,3 +7,4 @@ const config: BotConfig = {
   prefix: 'a!',
 }
 export default config
+  

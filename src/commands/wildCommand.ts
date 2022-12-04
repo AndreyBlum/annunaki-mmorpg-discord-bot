@@ -80,7 +80,7 @@ export class WildCommand implements Command {
            
            break;
            case '3️⃣':
-            if (await Scene.validatePermission('1', userId, guildId) === true) {
+            if (await Scene.validatePermission(1, userId, guildId) === true) {
               Battle.battlePveAction(message, scene[2].id)
               // message.channel.send(`${message.author.username} has won!`)
               // message.channel.send(`The mob that you killed is ${mob.name} and give you ${randomXp} of XP`)
@@ -92,7 +92,7 @@ export class WildCommand implements Command {
              
              break;
              case '4️⃣':
-              if (await Scene.validatePermission('4', userId, guildId) === true) {
+              if (await Scene.validatePermission(4, userId, guildId) === true) {
                 message.channel.send('You cannot enter')
                } else {
                 message.channel.send('You cannot enter')

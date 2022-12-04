@@ -22,17 +22,17 @@ export class ClassCommand implements Command {
                 {
                   name: '🧙',
                   value:
-                    'Mages have high burst, but have to manage your mana well.',
+                    '*Mages* have high burst, but have to manage your mana well.',
                   inline: true,
                 },
                 {
                   name: '🏹',
-                  value: 'Ranger have a high DPS and have a good speed.',
+                  value: '*Ranger* have a high DPS and have a good speed.',
                   inline: true,
                 },
                 {
                   name: '🛡️',
-                  value: 'Knights tanks very well and do a medium damage.',
+                  value: '*Knights* tanks very well and do a medium damage.',
                   inline: true,
                 },
                 { 
@@ -41,18 +41,18 @@ export class ClassCommand implements Command {
                 },
                 {
                   name: '🗡️',
-                  value: 'Rogues have a good speed and good DPS.',
+                  value: '*Rogues* have a good speed and good DPS.',
                   inline: true,
                 },
                 {
                   name: '🪓',
-                  value: 'Berserker have a medium resistance, and a good DPS.',
+                  value: '*Berserker* have a medium resistance, and a good DPS.',
                   inline: true,
                 },
                 {
                   name: '✝️',
                   value:
-                    'Paladins tanks very well, but its the most flexible class.',
+                    '*Paladins* tanks very well, but its the most flexible class.',
                   inline: true,
                 }
               )

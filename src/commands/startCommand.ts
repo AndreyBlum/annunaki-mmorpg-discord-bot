@@ -118,7 +118,7 @@ export class StartCommand implements Command {
                           defMultiplier = 1.1
                           mpMultiplier = 2
                           hpMultiplier = 1.1
-                          bpMultiplier = 1.7
+                          bpMultiplier = 3.0
                           spMultiplier = 1.2
                           image = 'https://i.imgur.com/4oBwRO2.jpg'
                           description = 'I see, ashen one, you have chosen Mage.\n Take care with your high mana usage and enjoy your bursts.'
@@ -129,7 +129,7 @@ export class StartCommand implements Command {
                           defMultiplier = 1.2
                           mpMultiplier = 1
                           hpMultiplier = 1.2
-                          bpMultiplier = 1.45
+                          bpMultiplier = 2.6
                           spMultiplier = 1.5
                           image = 'https://i.imgur.com/VlSgXTl.jpg'
                           description = 'I see, ashen one, you have chosen Ranger.\n Manage your advantage with high speed and DPS.'
@@ -140,7 +140,7 @@ export class StartCommand implements Command {
                           defMultiplier = 1.8
                           mpMultiplier = 1.1
                           hpMultiplier = 2
-                          bpMultiplier = 1.1
+                          bpMultiplier = 2.2
                           spMultiplier = 1.1
                           image = 'https://i.imgur.com/XhlhmuY.jpg'
                           description = 'I see, ashen one, you have chosen Knight.\n Now you can hold the entire enemies with your sword.'
@@ -151,7 +151,7 @@ export class StartCommand implements Command {
                           defMultiplier = 1.1
                           mpMultiplier = 1.1
                           hpMultiplier = 1.1
-                          bpMultiplier = 1.95
+                          bpMultiplier = 2.9
                           spMultiplier = 1.7
                           image = 'https://i.imgur.com/cnFXKuV.jpg'
                           description = 'I see, ashen one, you have chosen Rogue.\n Now you can burst enemies by their blind eyes.'
@@ -162,7 +162,7 @@ export class StartCommand implements Command {
                           defMultiplier = 1.5
                           mpMultiplier = 1.2
                           hpMultiplier = 1.6
-                          bpMultiplier = 1.3
+                          bpMultiplier = 2.5
                           spMultiplier = 1.3
                           image = 'https://i.imgur.com/MsdglCc.jpg'
                           description = 'I see, ashen one, you have chosen Berserker.\n Now you can taste their bloods with your axe.'
@@ -173,7 +173,7 @@ export class StartCommand implements Command {
                           defMultiplier = 1.6
                           mpMultiplier = 1.2
                           hpMultiplier = 1.6
-                          bpMultiplier = 1.7
+                          bpMultiplier = 2.5
                           spMultiplier = 1.1
                           image = 'https://i.imgur.com/FRVdszx.jpg'
                           description = 'I see, ashen one, you have chosen Paladin.\n Go and blind your enemies with your faith.'
@@ -213,7 +213,7 @@ export class StartCommand implements Command {
                           defMultiplier = 1.1
                           mpMultiplier = 2
                           hpMultiplier = 1.1
-                          bpMultiplier = 1.7
+                          bpMultiplier = 3.0
                           spMultiplier = 1.2
                           image = 'https://i.imgur.com/m0duawK.jpg'
                           description = 'I see, ashen one, you have chosen Mage.\n Take care with your high mana usage and enjoy your bursts.'
@@ -224,7 +224,7 @@ export class StartCommand implements Command {
                           defMultiplier = 1.2
                           mpMultiplier = 1
                           hpMultiplier = 1.2
-                          bpMultiplier = 1.45
+                          bpMultiplier = 2.6
                           spMultiplier = 1.5
                           image = 'https://i.imgur.com/CvHFB93.png'
                           description = 'I see, ashen one, you have chosen Ranger.\n Manage your advantage with high speed and DPS.'
@@ -235,7 +235,7 @@ export class StartCommand implements Command {
                           defMultiplier = 1.8
                           mpMultiplier = 1.1
                           hpMultiplier = 2
-                          bpMultiplier = 1.1
+                          bpMultiplier = 2.2
                           spMultiplier = 1.1
                           image = 'https://i.imgur.com/vbWA25x.png'
                           description = 'I see, ashen one, you have chosen Knight.\n Now you can hold the entire enemies with your sword.'
@@ -246,7 +246,7 @@ export class StartCommand implements Command {
                           defMultiplier = 1.1
                           mpMultiplier = 1.1
                           hpMultiplier = 1.1
-                          bpMultiplier = 1.95
+                          bpMultiplier = 2.9
                           spMultiplier = 1.7
                           image = 'https://i.imgur.com/kM0yhFF.png'
                           description = 'I see, ashen one, you have chosen Rogue.\n Now you can burst enemies by their blind eyes.'
@@ -257,7 +257,7 @@ export class StartCommand implements Command {
                           defMultiplier = 1.5
                           mpMultiplier = 1.2
                           hpMultiplier = 1.6
-                          bpMultiplier = 1.3
+                          bpMultiplier = 2.5
                           spMultiplier = 1.3
                           image = 'https://i.imgur.com/fU84qPG.png'
                           description = 'I see, ashen one, you have chosen Berserker.\n Now you can taste their bloods with your axe.'
@@ -268,7 +268,7 @@ export class StartCommand implements Command {
                           defMultiplier = 1.6
                           mpMultiplier = 1.2
                           hpMultiplier = 1.6
-                          bpMultiplier = 1.7
+                          bpMultiplier = 2.5
                           spMultiplier = 1.1
                           image = 'https://i.imgur.com/mlrdFWC.jpg'
                           description = 'I see, ashen one, you have chosen Paladin.\n Go and blind your enemies with your faith.'

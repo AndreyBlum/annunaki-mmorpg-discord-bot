@@ -4,6 +4,7 @@ const MobSchema = new mongoose.Schema({
   id: { type: Number },
   minHp: { type: Number },
   maxHp: { type: Number },
+  defense: { type: Number },
   bp: { type: Number },
   bpMultiplier: { type: Number },
   sceneID: { type: Number },

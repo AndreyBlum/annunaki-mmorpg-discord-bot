@@ -38,7 +38,37 @@ export class Utils {
     }
     return rpgClass
   }
-  static async createDefaultEmbed(message: Message) {
+
+  static convertFlatNumberToEmoji(number: any) {
+    switch (number) {
+      case 1:
+      number = '1️⃣'
+      break;
+      case 2:
+      number = '2️⃣'
+      break;
+      case 3:
+      number = '3️⃣'
+      break;
+      case 4:
+      number = '4️⃣'
+      break;
+      case 5:
+      number = '5️⃣'
+      break;
+      case 6:
+      number = '6️⃣'
+      case 7:
+      number = '7️⃣'
+      case 8:
+      number = '8️⃣'
+      case 9:
+      number = '9️⃣'
+      break;
+    }
+    return number
+  }
+  static async createDefaultEmbed() {
     const embed = new MessageEmbed()
       .setColor('#4B0082')
       .setAuthor(

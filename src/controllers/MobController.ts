@@ -19,8 +19,6 @@ export class Mob {
   // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   static async fetchAllMobsByScene(sceneId: number) {
     const mob = await mobs.find({ sceneID: sceneId })
-    console.log('mob vvv')
-    console.log(mob)
     return await mob
   }
 
